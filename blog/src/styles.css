@@ -1,0 +1,32 @@
+html {
+  scroll-behavior: smooth;
+}
+.menu{
+  display:inline;
+  margin-left:20px;
+}
+.icon{
+  display: block;
+
+}
+.center {
+  text-align: center;
+}
+.navbar{
+  font-size: 20px;
+}
+a{
+  padding-left: 10px;
+}
+.scroll {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+}
+.correct{
+  background-color: green;
+}
+.incorrect{
+  background-color: red;
+}
