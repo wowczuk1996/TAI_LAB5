@@ -12,16 +12,21 @@ export class DataService {
 }
 
 getAll() {
-  return this.http.get(this.url + '/api/posts/');
-}
+    return this.http.get(this.url + '/api/posts');
+  }
 
 getById(id) {
   return this.http.get(this.url + '/api/posts/'+ id);
 }
 
 getByText(data) {
-  return this.http.post(this.url + '/api/posts/', data);
+  return this.http.post(this.url + '/api/posts', data);
 }
+
+  createPost(data) {
+    return this.http.post(`${this.url}/posts`, { data: JSON.stringify(data) });
+  }
+
 //   private url = 'https://blogtai.herokuapp.com';
 //
 //     constructor(private http: HttpClient) {
