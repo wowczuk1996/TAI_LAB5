@@ -6,26 +6,31 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-    private url = 'http://localhost:8080';
+  private url = 'http://localhost:3000';
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {
+  }
 
-getAll() {
+  getAll() {
     return this.http.get(this.url + '/api/posts');
   }
 
-getById(id) {
-  return this.http.get(this.url + '/api/posts/'+ id);
-}
+  getById(id) {
+    return this.http.get(this.url + '/api/posts/' + id);
+  }
 
-getByText(data) {
-  return this.http.post(this.url + '/api/posts', data);
-}
+  getByText(data) {
+    return this.http.post(this.url + '/api/posts', data);
+  }
 
   createPost(data) {
-    return this.http.post(`${this.url}/posts`, { data: JSON.stringify(data) });
+    return this.http.post(`${this.url}/posts`, {data: JSON.stringify(data)});
   }
+
+  createOrUpdate(post) {
+    return this.http.post(`${this.url}/api/posts`, post);
+  }
+
 
 //   private url = 'https://blogtai.herokuapp.com';
 //
