@@ -2,13 +2,37 @@
   <h4>Dodaj post:</h4>
   <form (ngSubmit)="submit()">
     <div class="form-group">
+      <label class="col-form-label">Tytuł:</label>
+      <input
+        name="title"
+        type="text"
+        class="form-control"
+        placeholder="tytuł"
+        [(ngModel)]="post.title"
+      />
+    </div>
+
+    <div class="form-group">
       <label class="col-form-label">Adres obrazu:</label>
-      <input name="image" type="text" class="form-control" placeholder="URL" [(ngModel)]="post.image">
+      <input
+        name="image"
+        type="text"
+        class="form-control"
+        placeholder="URL"
+        [(ngModel)]="post.image"
+      />
     </div>
 
     <div class="form-group">
       <label class="col-form-label">Treść:</label>
-      <textarea name="text" type="text" class="form-control" placeholder="Treść" [(ngModel)]="post.text" rows="10"></textarea>
+      <textarea
+        name="text"
+        type="text"
+        class="form-control"
+        placeholder="Treść"
+        [(ngModel)]="post.text"
+        rows="10"
+      ></textarea>
     </div>
 
     <div class="form-group button">

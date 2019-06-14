@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { DataService } from "../../services/data.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css']
+  selector: "app-add-post",
+  templateUrl: "./add-post.component.html",
+  styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
-
   public post = {
-    image: '',
-    text: ''
-  }
+    image: "",
+    text: "",
+    title: ""
+  };
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
     this.dataService.createOrUpdate(this.post).subscribe(f => {
-      this.router.navigate(['/blog'])
-    })
+      this.router.navigate(["/blog"]);
+    });
   }
-
 }
