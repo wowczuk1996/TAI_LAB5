@@ -1,19 +1,23 @@
-'use strict';
+"use strict";
 
-import mongoose from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
-import mongoConverter from '../service/mongoConverter';
+import mongoose from "mongoose";
+import uniqueValidator from "mongoose-unique-validator";
+import mongoConverter from "../service/mongoConverter";
 import * as _ from "lodash";
 
-const postSchema = new mongoose.Schema({
-  image: {type: String},
-  text: {type: String}
-}, {
-  collection: 'kw-post'
-});
+const postSchema = new mongoose.Schema(
+  {
+    image: { type: String },
+    text: { type: String },
+    title: { type: String }
+  },
+  {
+    collection: "kw-post"
+  }
+);
 postSchema.plugin(uniqueValidator);
 
-const PostModel = mongoose.model('kw-post', postSchema);
+const PostModel = mongoose.model("kw-post", postSchema);
 
 async function query() {
   const result = await PostModel.find({});
@@ -29,7 +33,7 @@ async function query() {
 // }
 
 async function get(id) {
-  return PostModel.findOne({_id: id}).then(function (result) {
+  return PostModel.findOne({ _id: id }).then(function(result) {
     if (result) {
       return mongoConverter(result);
     }
@@ -45,7 +49,9 @@ async function createNewOrUpdate(data) {
         }
       });
     } else {
-      return PostModel.findByIdAndUpdate(data.id, _.omit(data, 'id'), {new: true});
+      return PostModel.findByIdAndUpdate(data.id, _.omit(data, "id"), {
+        new: true
+      });
     }
   });
 }
